@@ -1,0 +1,23 @@
+{
+  "name": "twitterest",
+  "version": "1.0.0",
+  "description": "A web application that allows you to discover and collect public photos posted on Twitter.Think of it as pinterest, but with the only source of pictures being Twitter.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "agilajah",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-preset-react": "^6.22.0",
+    "babelify": "^7.3.0",
+    "browserify": "^14.0.0",
+    "gulp": "^3.9.1",
+    "vinyl-source-stream": "^1.1.0"
+  },
+  "dependencies": {
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "snapkite-stream-client": "^1.0.3"
+  }
+}
