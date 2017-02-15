@@ -36,12 +36,55 @@ var StreamTweet = React.createClass({
     window.twitterest.tweetHtml = componentDOMRepresentation.children[1].outerHTML;
   },
 
+  componentWillReceiveProps: function(nextProps) {
+    console.log('[twitterest] StreamTweet: 4. Running componentWillReceiveProps()');
+
+    var currentTweetLength = this.props.tweet.text.length;
+    var nextTweetLength = nextProps.tweet.text.length;
+    var isNumberOfCharactersIncreasing = (nextTweetLength > currentTweetLength);
+    var headerText;
+
+    this.setState({
+      numberOfCharactersIsIncreasing: isNumberOfCharactersIncreasing
+    })
+
+    if (isNumberOfCharactersIncreasing) {
+      headerText = 'Number of characters is increasing';
+    } else {
+      headerText = 'Latest public photo from Twitter';
+    }
+
+    this.setState({
+      headerText: headerText
+    });
+
+    window.twitterest.numberOfReceivedTweets++;
+
+  },
+
+  shouldComponentUpdate: function(nextProps, nextState) {
+    console.log('[twitterest] StreamTweet: 5. Running shouldComponentUpdate()');
+
+    return (nextProps.tweet.text.length > 1);
+  },
+
+  componentWillUpdate: function(nextProps, nextState) {
+    console.log('[twitterest] StreamTweet: 6. Running componentWillUpdate()');
+  },
+
+  componentDidUpdate: function(prevProps, prevState) {
+    console.log('[twitterest] StreamTweet: 7. Running componentDidUpdate()');
+
+    window.twitterest.numberOfDisplayTweets++;
+  },
+
 
   componentWillUnmount: function() {
     console.log('[Snapterest] StreamTweet: 8. Running componentWillUnmount()');
 
     delete window.twitterest;
   },
+
 
   render: function() {
     console.log('[twitterest] StreamTweet: Running render()');
